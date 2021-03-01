@@ -1,4 +1,4 @@
-body.show-modal .backdrop {
+/* body.show-modal .backdrop {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
@@ -37,4 +37,27 @@ body.show-modal .modal {
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
+} */
+
+body {
+  position: relative;
+  margin: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
