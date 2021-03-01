@@ -1,6 +1,6 @@
 import cards from './data.js'
 
-// console.log(cards);
+// MODAL
 
 const ulRef = document.createElement('ul')
 const modalRef = document.querySelector('.modal')
@@ -38,12 +38,12 @@ modalRef.addEventListener('click', (e) => {
     }
 })
 
+// FORM
+
 
 const formRef = document.querySelector('.form')
 const inputRef = document.querySelector('.todo')
-
 const formUlRef = document.querySelector('.todolist')
-
 const filterRef = document.querySelector('.filter')
 
 const todoArr = []
@@ -57,6 +57,6 @@ formRef.addEventListener('submit', (e) => {
 })
 
 filterRef.addEventListener('input', () => {
-    const filtredArr = todoArr.filter(elem => elem.includes(filterRef.value))
-        formUlRef.innerHTML = filtredArr.join('')
+    const filteredArr = todoArr.filter(elem => elem.includes(filterRef.value))
+        formUlRef.innerHTML = filteredArr.join('')
 })
