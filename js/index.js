@@ -42,21 +42,27 @@ modalRef.addEventListener('click', (e) => {
 
 
 const formRef = document.querySelector('.form')
-const inputRef = document.querySelector('.todo')
+const iRef = document.querySelector('.todo')
 const formUlRef = document.querySelector('.todolist')
+const btnRef = document.querySelector('#btn')
+const clearId = document.querySelector('#clear')
 const filterRef = document.querySelector('.filter')
 
 const todoArr = []
 
 formRef.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.dir(inputRef);
-    todoArr.push(`<li><p>${inputRef.value}</p></li>`)
+    todoArr.push(`<li><p>${iRef.value}</p></li>`)
     formUlRef.innerHTML = todoArr.join('')
-    inputRef.value = ''
+    iRef.value = ''
 })
 
+
+
+btnRef.addEventListener('click', () => clearId.innerHTML = '')
+
 filterRef.addEventListener('input', () => {
-    const filteredArr = todoArr.filter(elem => elem.includes(filterRef.value))
+    const filteredArr = todoArr.filter(el => el.includes(filterRef.value))
         formUlRef.innerHTML = filteredArr.join('')
+
 })
