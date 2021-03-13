@@ -1,42 +1,48 @@
 import cards from './data.js'
 
-// MODAL
-
 const ulRef = document.createElement('ul')
-const modalRef = document.querySelector('.modal')
-const modalImgRef = document.querySelector('.modal-img')
 
 document.body.prepend(ulRef)
 
-const markup = cards.reduce((acc, { name, id, url, description }) => {
-   return acc + `<li id="${id}"><p>${name}</p><img src="${url}" alt="${description}" width="320"></li>`
+const markup = cards.reduce((acc, { name, url, id, description }) => {
+    return acc + `<li id="${id}"><p>${name}</p><img src="${url}" alt="${description}" width="333"></li>`
 }, '')
-
 
 ulRef.insertAdjacentHTML('beforeend', markup)
 
 
-ulRef.addEventListener('click', (e) => {
-    if (e.target.tagName === 'IMG') {
+const modalRef = document.querySelector('.modal')
+const modalImgRef = document.querySelector('.modal-img')
+
+
+// open Modal
+
+function openModal(e) {
+    if (e.target.nodeName === 'IMG') {
         modalRef.style.display = 'block'
         modalImgRef.src = e.target.src
         modalImgRef.alt = e.target.alt
     }
-})
+}
+ulRef.addEventListener('click', openModal)
 
-window.addEventListener('keyup', (event) => {
+// close Modal on Overlay
 
-    if (event.keyCode === 27) {
-        modalRef.style.display = 'none'
-    };
-})
-
-modalRef.addEventListener('click', (e) => {
-    console.dir(e.currentTarget);
-    if (e.target.localName !== 'img') {
+function closeModal(e) {
+    if (e.target.nodeName !== 'IMG') {
         modalRef.style.display = 'none'
     }
-})
+}
+window.addEventListener('click', closeModal)
+
+// close Modal with Escape
+
+function closeModalWithEscape(e) {
+    if (e.key === 'Escape') {
+        modalRef.style.display = 'none'
+    }
+}
+window.addEventListener('keyup', closeModalWithEscape)
 
 // FORM
 
